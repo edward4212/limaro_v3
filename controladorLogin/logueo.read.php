@@ -1,11 +1,10 @@
 <?php
+date_default_timezone_set('America/Bogota');
 session_start();
-// Protección CSRF y validación de sesión
 if (!isset($_SESSION['user_id'])) {
-    header('Location: ../login.php');
+    session_unset();
+    session_destroy();
+    header("Location: ../login/login.php");
     exit();
 }
-// Escape de datos
-$user = htmlspecialchars($_SESSION['username']);
-// Resto del código seguro...
 ?>
